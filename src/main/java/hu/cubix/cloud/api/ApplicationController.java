@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/")
 public class ApplicationController {
 
-    @Value("${msg.default}")
-    private String defaultMessage;
+    private static final String defaultMessage = "This is a default message!";
 
     @GetMapping("/kgezacubix/test")
     public CubixResponse demoMessage(@RequestParam(required = false, name = "message") String message) {

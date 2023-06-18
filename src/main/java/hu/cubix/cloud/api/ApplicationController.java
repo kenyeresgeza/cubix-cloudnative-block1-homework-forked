@@ -1,6 +1,7 @@
 package hu.cubix.cloud.api;
 
 import hu.cubix.cloud.model.CubixResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,13 @@ import java.time.LocalDateTime;
 @RequestMapping("/")
 public class ApplicationController {
 
-    @GetMapping("/application/test")
+    @Value("${msg.default}")
+    private String defaultMessage;
+
+    @GetMapping("/kgezacubix/test")
     public CubixResponse demoMessage(@RequestParam(required = false, name = "message") String message) {
         if (!StringUtils.hasText(message)) {
-            message = "default";
+            message = defaultMessage;
         }
         return new CubixResponse(LocalDateTime.now(), message);
     }

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/")
 public class ApplicationController {
 
-    @GetMapping("/kgezacubix/test")
+    @GetMapping("/application/test")
     public CubixResponse demoMessage(@RequestParam(required = false, name = "message") String message) {
         if (!StringUtils.hasText(message)) {
             message = ApiMessage.DEFAULT.getValue();
